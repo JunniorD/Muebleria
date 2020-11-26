@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="datColor.cs" />
     <Compile Include="datMaterial.cs" />
     <Compile Include="datModelo.cs" />
     <Compile Include="datProducto.cs" />

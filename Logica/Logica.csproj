@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="LogMaterial.cs" />
     <Compile Include="LogModelo.cs" />
+    <Compile Include="LogoColor.cs" />
     <Compile Include="LogProducto.cs" />
     <Compile Include="LogProveedor.cs" />
     <Compile Include="LogTipo.cs" />

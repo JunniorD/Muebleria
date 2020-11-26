@@ -46,5 +46,11 @@ namespace ProyectoMuebleria
             Form formulario = new Proveedor();
             formulario.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form formulario = new Color();
+            formulario.Show();
+        }
     }
 }
