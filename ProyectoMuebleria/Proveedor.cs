@@ -12,46 +12,36 @@ using Entidades;
 
 namespace ProyectoMuebleria
 {
-    public partial class Form1 : Form
+    public partial class Proveedor : Form
     {
-        public Form1()
+        public Proveedor()
         {
             InitializeComponent();
             ListarDatos();
         }
-        public List<Producto> ListarDatos()
+        public List<Proveedores> ListarDatos()
         {
-            List<Producto> listadato = LogProducto.Instancia.ListarProducto();
+            List<Proveedores> listadato = LogProveedor.Instancia.ListarProveedor();
             if (listadato.Count > 0)
             {
                 BindingSource datosEnlazados = new BindingSource();
                 datosEnlazados.DataSource = listadato;
-                datosProducto.DataSource = datosEnlazados;
+                DatosProveedor.DataSource = datosEnlazados;
             }
             return (listadato);
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             try
             {
-                Producto bo = new Producto();
-                Form1 formGridBoleta = new Form1();
-                bo.Nombre = txtNombre.Text.Trim();
-                bo.Calidad = txtCalidad.Text.Trim();
-                bo.Estado = checkEstado.Checked;
+                Proveedores bo = new Proveedores();
+                Proveedor formGridBoleta = new Proveedor();
+                bo.nombre = txtNombre.Text.Trim();
+                bo.Caracteristica = txtCaracteristica.Text.Trim();
+                bo.estado = CheckEstado.Checked;
 
-                LogProducto.Instancia.InsetarProducto(bo);
+                LogProveedor.Instancia.InsetarProveedor(bo);
                 MessageBox.Show("Los Datos son Registrados con exito");
                 ActualizarGridDatos();
             }
@@ -59,7 +49,6 @@ namespace ProyectoMuebleria
             {
                 throw ex;
             }
-
         }
         private void ActualizarGridDatos()
         {
@@ -72,16 +61,16 @@ namespace ProyectoMuebleria
             }
         }
 
-        private void BtbBuscar_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             int id = int.Parse(txtCodigo.Text);
-            Producto emp = LogProducto.Instancia.BuscarProducto(id);
+            Proveedores emp = LogProveedor.Instancia.BuscarProveedor(id);
             if (emp != null)
             {
-                if (emp.Codigo == id)
+                if (emp.idProveedor == id)
                 {
-                    txtCodigo.Text = emp.Codigo.ToString();
-                    txtNombre.Text = emp.Nombre.ToString();
+                    txtCodigo.Text = emp.idProveedor.ToString();
+                    txtNombre.Text = emp.nombre.ToString();
                 }
                 else
                 {
@@ -98,23 +87,23 @@ namespace ProyectoMuebleria
             }
         }
 
-        private void BtbEliminar_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             int id = int.Parse(txtCodigo.Text);
-            Producto P = LogProducto.Instancia.BuscarProducto(id);
+            Proveedores P = LogProveedor.Instancia.BuscarProveedor(id);
             if (P != null)
             {
                 try
                 {
-                    if (P.Codigo == id)
+                    if (P.idProveedor == id)
                     {
 
                         //Boolean inserta;
-                        Producto p = new Producto();
-                        Form1 formGridBoleta = new Form1();
-                        p.Codigo = id;
+                        Proveedores p = new Proveedores();
+                        Proveedor formGridBoleta = new Proveedor();
+                        p.idProveedor = id;
 
-                        LogProducto.Instancia.InhabilitarProducto(p);
+                        LogProveedor.Instancia.InhabilitarProveedor(p);
                         MessageBox.Show("Los datos ham sido eliminados con exito");
                         //   Close();
                         ActualizarGridDatos();
@@ -126,13 +115,6 @@ namespace ProyectoMuebleria
                 }
 
             }
-        }
-
-        private void BtnSalir_Click(object sender, EventArgs e)
-        {
-            Form formulario = new Principal();
-            formulario.Show();
-    
         }
     }
 }

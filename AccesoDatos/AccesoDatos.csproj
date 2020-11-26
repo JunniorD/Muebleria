@@ -41,9 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccesoDatos.cs" />
+    <Compile Include="datMaterial.cs" />
+    <Compile Include="datModelo.cs" />
+    <Compile Include="datProducto.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="datProveedor.cs" />
+    <Compile Include="datTipo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{cd323da3-b51f-4520-a4f8-f79758f1172d}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
